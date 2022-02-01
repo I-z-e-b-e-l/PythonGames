@@ -23,10 +23,10 @@ print_board()
 
 
 
-def player_X_turn():
+def game_play():
 
-  playerXwin = 0
-  while playerXwin < 1:
+  winner = 0
+  while winner < 1:
 
     playerXposition = input("Player 1: What position would you like to play? ")
     print(" ")
@@ -54,12 +54,51 @@ def player_X_turn():
     xWin = ["X", "X", "X"]
 
     if xWin in winOptions:
-      playerXwin = 1
+      winner = 1
       print("Player 1 Wins!")
+
+    #this is kind of redic. maybe use set and .issubset? 
+
+    elif "A1" not in board and "A2" not in board and "A3" not in board and "B1" not in board and "B2" not in board and "B3" not in board and "C1"not in board and "C2" not in board and "C3" not in board:
+      winner = 1
+      print("Tie!")
+      break
+
+    else: 
+      print("keep playing")
+      print(" ")
+      winner = 0
+
+    # Player 2
+
+    playerOposition = input("Player 2: What position would you like to play? ")
+    print(" ")
+
+    if playerOposition in board:
+      selected = board.index(playerOposition)
+      board.pop(selected)
+      board.insert(selected, "O")
+
+    print_board()
+
+    oWin = ["O", "O", "O"]
+
+    if oWin in winOptions:
+      winner = 1
+      print("Player 2 Wins!")
+
+    elif "A1" not in board and "A2" not in board and "A3" not in board and "B1" not in board and "B2" not in board and "B3" not in board and "C1"not in board and "C2" not in board and "C3" not in board:
+      winner = 1
+      print("Tie!")
+      break
       
     else: 
       print("keep playing")
       print(" ")
-      playerXwin = 0
+      winner = 0
 
-player_X_turn()
+game_play()
+
+
+
+
