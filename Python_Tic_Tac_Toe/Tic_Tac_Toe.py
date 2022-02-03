@@ -4,6 +4,18 @@ board = [
   "C1", "C2", "C3"
 ]
 
+# board = [
+#   "X", "O", "X",
+#   "X", "O", "B3",
+#   "C1", "C2", "C3"
+# ]
+
+positions = {
+  "A1", "A2", "A3",
+  "B1", "B2", "B3",
+  "C1", "C2", "C3"
+}
+
 print("Player 1 = X, Player 2 = O")
 print(" ")
 
@@ -59,7 +71,9 @@ def game_play():
 
     #this is kind of redic. maybe use set and .issubset? 
 
-    elif "A1" not in board and "A2" not in board and "A3" not in board and "B1" not in board and "B2" not in board and "B3" not in board and "C1"not in board and "C2" not in board and "C3" not in board:
+    # elif "A1" not in board and "A2" not in board and "A3" not in board and "B1" not in board and "B2" not in board and "B3" not in board and "C1"not in board and "C2" not in board and "C3" not in board:
+
+    elif positions.isdisjoint(board) == True:
       winner = 1
       print("Tie!")
       break
@@ -87,7 +101,9 @@ def game_play():
       winner = 1
       print("Player 2 Wins!")
 
-    elif "A1" not in board and "A2" not in board and "A3" not in board and "B1" not in board and "B2" not in board and "B3" not in board and "C1"not in board and "C2" not in board and "C3" not in board:
+    # elif "A1" not in board and "A2" not in board and "A3" not in board and "B1" not in board and "B2" not in board and "B3" not in board and "C1"not in board and "C2" not in board and "C3" not in board:
+
+    elif positions.isdisjoint(board) == True:
       winner = 1
       print("Tie!")
       break
